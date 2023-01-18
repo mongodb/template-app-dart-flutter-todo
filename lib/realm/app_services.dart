@@ -4,32 +4,31 @@ import 'package:realm/realm.dart';
 class AppServices with ChangeNotifier {
   String id;
   Uri baseUrl;
-  App _app;
+  App app;
   User? currentUser;
   AppServices(this.id, this.baseUrl)
-      : _app = App(AppConfiguration(id, baseUrl: baseUrl));
+      : app = App(AppConfiguration(id, baseUrl: baseUrl));
 
-  Future<User> logInUserEmailPw(String email, String password) async {
+  Future<User> logInUserEmailPassword(String email, String password) async {
     User loggedInUser =
-        await _app.logIn(Credentials.emailPassword(email, password));
+        await app.logIn(Credentials.emailPassword(email, password));
     currentUser = loggedInUser;
     notifyListeners();
     return loggedInUser;
   }
 
-  Future<User> registerUserEmailPw(String email, String password) async {
-    EmailPasswordAuthProvider authProvider = EmailPasswordAuthProvider(_app);
+  Future<User> registerUserEmailPassword(String email, String password) async {
+    EmailPasswordAuthProvider authProvider = EmailPasswordAuthProvider(app);
     await authProvider.registerUser(email, password);
     User loggedInUser =
-        await _app.logIn(Credentials.emailPassword(email, password));
+        await app.logIn(Credentials.emailPassword(email, password));
     currentUser = loggedInUser;
     notifyListeners();
     return loggedInUser;
   }
 
-  Future<void> logOutUser() async {
-    await _app.currentUser?.logOut();
+  Future<void> logOut() async {
+    await currentUser?.logOut();
     currentUser = null;
-    notifyListeners();
   }
 }

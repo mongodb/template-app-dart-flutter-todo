@@ -1,34 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter_todo/realm/realm_services.dart';
+import 'package:flutter_todo/theme.dart';
 import 'dart:convert';
 import 'package:provider/provider.dart';
-import 'package:realm/realm.dart';
 import 'package:flutter_todo/realm/app_services.dart';
-import 'package:flutter_todo/realm/init_realm.dart';
 import 'package:flutter_todo/screens/homepage.dart';
 import 'package:flutter_todo/screens/log_in.dart';
 
+import 'components/widgets.dart';
+
 void main() async {
-  // get app id from config
   WidgetsFlutterBinding.ensureInitialized();
-  final realmConfig =
-      json.decode(await rootBundle.loadString('assets/config/realm.json'));
+  final realmConfig = json.decode(await rootBundle.loadString('assets/config/atlasConfig.json'));
   String appId = realmConfig['appId'];
   Uri baseUrl = Uri.parse(realmConfig['baseUrl']);
 
+
   return runApp(MultiProvider(providers: [
-    ChangeNotifierProvider<AppServices>(
-        create: (_) => AppServices(appId, baseUrl)),
-    ProxyProvider<AppServices, Realm?>(
-      update: (context, app, previousRealm) {
-        if (app.currentUser != null) {
-          previousRealm?.close();
-          return initRealm(app.currentUser!);
-        }
-        return null;
-      },
-      dispose: (_, realm) => realm?.close(),
-    )
+    ChangeNotifierProvider<AppServices>(create: (_) => AppServices(appId, baseUrl)),
+    ChangeNotifierProxyProvider<AppServices, RealmServices?>(
+        // RealmServices can only be initialized only if the user is logged in.
+        create: (context) => null,
+        update: (BuildContext context, AppServices appServices, RealmServices? realmServices) {
+          return appServices.app.currentUser != null ? RealmServices(appServices.app) : null;
+        }),
   ], child: const App()));
 }
 
@@ -37,21 +33,18 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currentUser =
-        Provider.of<AppServices>(context, listen: false).currentUser;
+    final currentUser = Provider.of<RealmServices?>(context, listen: false)?.currentUser;
+
     return WillPopScope(
       onWillPop: () async => false,
       child: MaterialApp(
         title: 'Realm Flutter Todo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+        theme: appThemeData(),
         initialRoute: currentUser != null ? '/' : '/login',
-        routes: {
-          '/': (context) => const HomePage(),
-          '/login': (context) => LogIn()
-        },
+        routes: {'/': (context) => const HomePage(), '/login': (context) => LogIn()},
       ),
     );
   }
 }
+
+
