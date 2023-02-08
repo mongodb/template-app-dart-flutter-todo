@@ -14,7 +14,7 @@ dependencies:
 
   provider: ^6.0.0
   cupertino_icons: ^1.0.2
-  realm: ^0.8.0+rc
+  realm: 1.0.0
   path_provider: ^2.0.10
 
 dev_dependencies:
@@ -23,9 +23,7 @@ dev_dependencies:
 
   flutter_lints: ^2.0.1
 
-
 flutter:
-
   uses-material-design: true
 
   assets:
