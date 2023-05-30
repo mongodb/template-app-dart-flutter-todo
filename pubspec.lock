@@ -503,26 +503,26 @@ packages:
     dependency: "direct main"
     description:
       name: realm
-      sha256: c725fde43a61c4e1c9ad1309609ec9256b21af72e3db935e83d20c01491aa435
+      sha256: e9c63a5a982dd4357ba7f13a4dac7cdcf4eb6ec837f2f043a51ba414f4973337
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.3"
   realm_common:
     dependency: transitive
     description:
       name: realm_common
-      sha256: c7531a76ec25a695f9a247529c330075c6cdf9bde6f1cb06e9abb685fed280a9
+      sha256: e31f72feddb77e7dcfb9a8a0d19c25c79d71ecf6d873de8801b9d58cc29b5a5e
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.3"
   realm_generator:
     dependency: transitive
     description:
       name: realm_generator
-      sha256: d2843037b35e8d108cdbb7f1c33b790f6a1ac00e77a10400b67ad405e767a36b
+      sha256: "9af5252323e19ba4cd63e984b5aad20a3f809d79a6fee7779ef959456b2bb78e"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.3"
   sane_uuid:
     dependency: transitive
     description:
@@ -689,5 +689,5 @@ packages:
     source: hosted
     version: "3.1.1"
 sdks:
-  dart: ">=2.19.0 <4.0.0"
+  dart: ">=2.19.0 <3.0.0"
   flutter: ">=3.0.3"
