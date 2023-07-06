@@ -8,8 +8,6 @@ import 'package:flutter_todo/realm/app_services.dart';
 import 'package:flutter_todo/screens/homepage.dart';
 import 'package:flutter_todo/screens/log_in.dart';
 
-import 'components/widgets.dart';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final realmConfig = json.decode(await rootBundle.loadString('assets/config/atlasConfig.json'));
