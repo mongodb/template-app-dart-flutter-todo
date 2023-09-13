@@ -13,10 +13,11 @@ class HomePage extends StatelessWidget {
     return Provider.of<RealmServices?>(context, listen: false) == null
         ? Container()
         : Scaffold(
-      appBar: TodoAppBar(),
-      body: const TodoList(),
-            floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+            appBar: TodoAppBar(),
+            body: const TodoList(),
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.endDocked,
             floatingActionButton: const CreateItemAction(),
-    );
+          );
   }
 }

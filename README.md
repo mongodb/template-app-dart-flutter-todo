@@ -1,14 +1,23 @@
 # Realm Flutter Todo
 
-A todo list application built with the [Realm Flutter SDK](https://www.mongodb.com/docs/realm/sdk/flutter/)
-and [Atlas Device Sync](https://www.mongodb.com/docs/atlas/app-services/sync/).
+A todo list application built with the [Realm Flutter SDK](https://www.mongodb.com/docs/realm/sdk/flutter/) and [Atlas Device Sync](https://www.mongodb.com/docs/atlas/app-services/sync/).
+
+You can follow along with the [Flutter Tutorial](https://www.mongodb.com/docs/atlas/app-services/tutorial/flutter/) to see how to build, modify, and
+run this template app.
 
 ## Configuration
 
-Ensure `flutter_todo/assets/config/atlasConfig.json` exists and contains the following properties:
+For this template app to work, you must ensure that `/assets/config/atlasConfig.json` exists and contains the following properties:
 
 - **appId:** your Atlas App Services App ID.
 - **baseUrl:** the App Services backend URL. This should be https://realm.mongodb.com in most cases.
+
+### Using the Atlas App Services UI
+
+The easiest way to use this template app is to log on to [Atlas App Services](https://realm.mongodb.com/) and click the **Create App From Template** button. Choose
+**Real Time Sync**, and then follow the prompts. While the backend app is being
+created, you can download this Flutter template app pre-configured for your new
+app.
 
 ### Cloning from GitHub
 
@@ -27,7 +36,7 @@ to: [Find Your Project or App Id](https://www.mongodb.com/docs/atlas/app-service
 
 If you have downloaded this client as a .zip file from the Atlas App Services
 UI, it does not contain the App Services App ID. You must replace any value
-in this client's `appId` field in `flutter_todo/assets/config/atlasConfig.json`
+in this client's `appId` field in `/assets/config/atlasConfig.json`
 with your App Services App ID. For help finding this ID, refer to:
 [Find Your Project or App Id](https://www.mongodb.com/docs/atlas/app-services/reference/find-your-project-or-app-id/)
 
