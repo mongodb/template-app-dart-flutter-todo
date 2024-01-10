@@ -10,12 +10,12 @@ run this template app.
 For this template app to work, you must ensure that `/assets/config/atlasConfig.json` exists and contains the following properties:
 
 - **appId:** your Atlas App Services App ID.
-- **baseUrl:** the App Services backend URL. This should be https://realm.mongodb.com in most cases.
-- **atlasExplorerLink:** the App Services Data Explorer URL. This should be similar to https://cloud.mongodb.com/links/<YOUR-ATLAS-PROJECT-ID>/explorer/<YOUR-CLUSTER-NAME>/database/collection/find
+- **baseUrl:** the App Services backend URL. This should be https://services.cloud.mongodb.com in most cases.
+- **dataExplorerLink:** the App Services Data Explorer URL. This should be similar to https://cloud.mongodb.com/links/<YOUR-ATLAS-PROJECT-ID>/explorer/<YOUR-CLUSTER-NAME>/database/collection/find
 
 ### Using the Atlas App Services UI
 
-The easiest way to use this template app is to log on to [Atlas App Services](https://realm.mongodb.com/) and click the **Create App From Template** button. Choose
+The easiest way to use this template app is to log on to [Atlas App Services](https://services.cloud.mongodb.com) and click the **Create App From Template** button. Choose
 **Real Time Sync**, and then follow the prompts. While the backend app is being
 created, you can download this Flutter template app pre-configured for your new
 app.
@@ -46,8 +46,8 @@ For this template app to work, you must ensure that
 `/assets/config/atlasConfig.json` exists and contains the following properties:
 
 - **appId:** your Atlas App Services App ID.
-- **baseUrl:** the App Services backend URL. This should be https://realm.mongodb.com in most cases.
-- **atlasExplorerLink:** the App Services Data Explorer URL. This should be similar to https://cloud.mongodb.com/links/<YOUR-ATLAS-PROJECT-ID>/explorer/<YOUR-CLUSTER-NAME>/database/collection/find
+- **baseUrl:** the App Services backend URL. This should be https://services.cloud.mongodb.com in most cases.
+- **dataExplorerLink:** the App Services Data Explorer URL. This should be similar to https://cloud.mongodb.com/links/<YOUR-ATLAS-PROJECT-ID>/explorer/<YOUR-CLUSTER-NAME>/database/collection/find
 
 Once you have created the App Services App, replace any value in the
 `appId` field with your App Services App ID. For help finding this ID, refer
