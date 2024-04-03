@@ -5,6 +5,8 @@ import 'package:flutter_todo/components/widgets.dart';
 import 'package:flutter_todo/realm/app_services.dart';
 
 class LogIn extends StatefulWidget {
+  const LogIn({super.key});
+
   @override
   _LogInState createState() => _LogInState();
 }
@@ -41,7 +43,7 @@ class _LogInState extends State<LogIn> {
             child: Column(
               children: [
                 Text(_isLogin ? 'Log In' : 'Sign Up', style: const TextStyle(fontSize: 25)),
-                loginField(_emailController, labelText: "Email", hintText: "Enter valid email like abc@gmail.com"),
+                loginField(_emailController, labelText: "Email", hintText: "Enter valid email (example@mail.com)"),
                 loginField(_passwordController, labelText: "Password", hintText: "Enter secure password", obscure: true),
                 const Padding(
                   padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
@@ -57,7 +59,7 @@ class _LogInState extends State<LogIn> {
                 TextButton(
                     onPressed: () => setState(() => _isLogin = !_isLogin),
                     child: Text(
-                      _isLogin ? "New to Flutter Realm Todo? Sign up" : 'Already have an account? Log in.',
+                      _isLogin ? "New to Flutter SDK Todo? Sign up" : 'Already have an account? Log in.',
                     )),
                 Padding(
                   padding: const EdgeInsets.all(25),

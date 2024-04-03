@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_todo/components/todo_item.dart';
@@ -10,7 +12,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../main.dart';
 
 class TodoList extends StatefulWidget {
-  const TodoList({Key? key}) : super(key: key);
+  const TodoList({super.key});
 
   @override
   State<TodoList> createState() => _TodoListState();
@@ -33,7 +35,7 @@ class _TodoListState extends State<TodoList> {
     final String atlasUrl =
         Provider.of<Config>(context, listen: false).atlasUrl;
 
-    print("To see your data in Atlas, follow this link: $atlasUrl");
+    log('To see your data in Atlas, follow this link: $atlasUrl');
 
     return Stack(
       children: [

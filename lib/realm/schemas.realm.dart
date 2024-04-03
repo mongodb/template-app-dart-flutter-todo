@@ -6,6 +6,7 @@ part of 'schemas.dart';
 // RealmObjectGenerator
 // **************************************************************************
 
+// ignore_for_file: type=lint
 class Item extends _Item with RealmEntity, RealmObjectBase, RealmObject {
   static var _defaultsSet = false;
 
@@ -55,16 +56,46 @@ class Item extends _Item with RealmEntity, RealmObjectBase, RealmObject {
   @override
   Item freeze() => RealmObjectBase.freezeObject<Item>(this);
 
-  static SchemaObject get schema => _schema ??= _initSchema();
-  static SchemaObject? _schema;
-  static SchemaObject _initSchema() {
+  EJsonValue toEJson() {
+    return <String, dynamic>{
+      '_id': id.toEJson(),
+      'isComplete': isComplete.toEJson(),
+      'summary': summary.toEJson(),
+      'owner_id': ownerId.toEJson(),
+    };
+  }
+
+  static EJsonValue _toEJson(Item value) => value.toEJson();
+  static Item _fromEJson(EJsonValue ejson) {
+    return switch (ejson) {
+      {
+        '_id': EJsonValue id,
+        'isComplete': EJsonValue isComplete,
+        'summary': EJsonValue summary,
+        'owner_id': EJsonValue ownerId,
+      } =>
+        Item(
+          fromEJson(id),
+          fromEJson(summary),
+          fromEJson(ownerId),
+          isComplete: fromEJson(isComplete),
+        ),
+      _ => raiseInvalidEJson(ejson),
+    };
+  }
+
+  static final schema = () {
     RealmObjectBase.registerFactory(Item._);
-    return const SchemaObject(ObjectType.realmObject, Item, 'Item', [
+    register(_toEJson, _fromEJson);
+    return SchemaObject(ObjectType.realmObject, Item, 'Item', [
       SchemaProperty('id', RealmPropertyType.objectid,
           mapTo: '_id', primaryKey: true),
       SchemaProperty('isComplete', RealmPropertyType.bool),
       SchemaProperty('summary', RealmPropertyType.string),
       SchemaProperty('ownerId', RealmPropertyType.string, mapTo: 'owner_id'),
     ]);
-  }
+  }();
+
+  @override
+  SchemaObject get objectSchema => RealmObjectBase.getSchema(this) ?? schema;
 }

@@ -6,13 +6,13 @@ import 'package:provider/provider.dart';
 import 'package:flutter_todo/realm/realm_services.dart';
 
 class TodoAppBar extends StatelessWidget implements PreferredSizeWidget {
-  TodoAppBar({Key? key}) : super(key: key);
+  TodoAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
     final realmServices = Provider.of<RealmServices>(context);
     return AppBar(
-      title: const Text('Realm Flutter To-Do'),
+      title: const Text('Flutter SDK To-Do App'),
       automaticallyImplyLeading: false,
       actions: <Widget>[
         IconButton(

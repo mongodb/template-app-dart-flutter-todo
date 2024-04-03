@@ -11,7 +11,7 @@ enum MenuOption { edit, delete }
 class TodoItem extends StatelessWidget {
   final Item item;
 
-  const TodoItem(this.item, {Key? key}) : super(key: key);
+  const TodoItem(this.item, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class TodoItem extends StatelessWidget {
                       isComplete: value ?? false);
                 } else {
                   errorMessageSnackBar(context, "Change not allowed!",
-                          "You are not allowed to change the status of \n tasks that don't belog to you.")
+                          "You are not allowed to change the status of \n tasks that don't belong to you.")
                       .show(context);
                 }
               },
@@ -75,7 +75,7 @@ class TodoItem extends StatelessWidget {
           );
         } else {
           errorMessageSnackBar(context, "Edit not allowed!",
-                  "You are not allowed to edit tasks \nthat don't belog to you.")
+                  "You are not allowed to edit tasks \nthat don't belong to you.")
               .show(context);
         }
         break;
@@ -84,7 +84,7 @@ class TodoItem extends StatelessWidget {
           realmServices.deleteItem(item);
         } else {
           errorMessageSnackBar(context, "Delete not allowed!",
-                  "You are not allowed to delete tasks \n that don't belog to you.")
+                  "You are not allowed to delete tasks \n that don't belong to you.")
               .show(context);
         }
         break;
