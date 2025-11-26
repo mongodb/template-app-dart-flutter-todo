@@ -1,4 +1,9 @@
-# Flutter SDK Todo
+> [!Warning]
+> Atlas App Services has reached its end-of-life status and is no longer actively supported by MongoDB.
+
+<del>
+
+  # Flutter SDK Todo
 
 A todo list application built with the [Atlas Device SDK for Flutter](https://www.mongodb.com/docs/realm/sdk/flutter/) and
 [Atlas Device Sync](https://www.mongodb.com/docs/atlas/app-services/sync/).
